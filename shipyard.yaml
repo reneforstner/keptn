@@ -28,7 +28,7 @@ spec:
         tasks: 
         - name: "deployment"
           properties:
-            deploymentstrategy: "blue_green_service"
+            deploymentstrategy: "direct"
         - name: "test"
           properties:
             teststrategy: "functional"
@@ -39,9 +39,22 @@ spec:
       sequences:
       - name: "delivery"
         triggeredOn:
-          - event: "hardening.delivery.finished"
+          - event: "staging.delivery.finished"
         tasks: 
         - name: "deployment"
           properties:
-            deploymentstrategy: "blue_green_service"
+            deploymentstrategy: "direct"
         - name: "release"
+      - name: rollback
+        triggeredOn:
+        - event: production.delivery.finished
+          selector:
+            match:
+              result: failed
+        tasks:
+        - name: rollback
+      - name: remediation
+        tasks:
+        - name: remediation
+        - name: evaluation
+          triggeredAfter: "10m"
