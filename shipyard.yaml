@@ -13,7 +13,7 @@ spec:
             deploymentstrategy: "direct"
         - name: "test"
           properties:
-            teststrategy: "functional"
+            teststrategy: "performance"
         - name: "evaluation"
         - name: "release"
       - name: "evaluation"
