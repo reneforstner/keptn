@@ -19,3 +19,18 @@ spec:
             key: token
       subscriptionID: 38a8d045-0a3b-403e-b9cb-82fbb3e903d1
       sendFinished: false
+    - type: sh.keptn.event.test.triggered
+      requests:
+        - curl --request POST
+          http://{{.env.secret_jenkins_user}}:{{.env.secret_jenkins_token}}@aed7b12b01bac48779edd721007b1ac3-1677765929.us-west-2.elb.amazonaws.com/job/sockshop/job/carts.test/buildWithParameters?shkeptncontext={{.shkeptncontext}}&triggeredid={{.id}}&stage={{.data.stage}}&teststrategy={{.data.test.teststrategy}}
+      envFrom:
+        - name: secret_jenkins_token
+          secretRef:
+            name: jenkins
+            key: token
+        - name: secret_jenkins_user
+          secretRef:
+            name: jenkins
+            key: user
+      subscriptionID: 7d0ff32d-21ba-436d-9ab3-8907aef4fcef
+      sendFinished: false
