@@ -19,3 +19,18 @@ spec:
             key: user
       subscriptionID: 7d0ff32d-21ba-436d-9ab3-8907aef4fcef
       sendFinished: false
+    - type: sh.keptn.event.deployment.triggered
+      requests:
+        - curl --request POST
+          https://webhook.site/8e6c27be-1de7-473f-9286-4b0c91d80bb8?{{.env.secret_jenkins_user}}:{{.env.secret_jenkins_token}}&buildWithParameter?shkeptncontext={{.shkeptncontext}}&triggeredid={{.id}}&stage={{.data.stage}}
+      envFrom:
+        - name: secret_jenkins_token
+          secretRef:
+            name: jenkins
+            key: token
+        - name: secret_jenkins_user
+          secretRef:
+            name: jenkins
+            key: user
+      subscriptionID: 38a8d045-0a3b-403e-b9cb-82fbb3e903d1
+      sendFinished: false
