@@ -45,8 +45,18 @@ spec:
               result: failed
         tasks:
         - name: rollback
+      - name: evaluation
+        triggeredOn:
+        - event: production.delivery.finished
+        tasks:
+        - name: evaluation
+          triggeredAfter: "10m"
+          properties:
+            timeframe: "10m"
       - name: remediation
         tasks:
         - name: remediation
         - name: evaluation
           triggeredAfter: "10m"
+          properties:
+            timeframe: "10m"
