@@ -37,7 +37,6 @@ spec:
         - name: "deployment"
           properties:
             deploymentstrategy: "direct"
-        - name: "release"
       - name: rollback
         triggeredOn:
         - event: production.delivery.finished
