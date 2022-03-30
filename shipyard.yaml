@@ -55,8 +55,8 @@ spec:
             timeframe: "5m"
       - name: remediation
         tasks:
-        - name: remediation
+        - name: deactivatePromo
         - name: evaluation
-          triggeredAfter: "10m"
+          triggeredAfter: "5m"
           properties:
-            timeframe: "10m"
+            timeframe: "5m"
