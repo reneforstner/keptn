@@ -1,0 +1,12 @@
+apiVersion: webhookconfig.keptn.sh/v1alpha1
+kind: WebhookConfig
+metadata:
+  name: webhook-configuration
+spec:
+  webhooks:
+    - type: sh.keptn.event.deactivatePromo.triggered
+      requests:
+        - curl --request GET
+          http://af831e94b985b4be4ad9dbcb2e2a94b9-2021747662.us-west-2.elb.amazonaws.com/carts/1/items/promotion/0
+      subscriptionID: 3b1c2e5b-5220-4446-81b1-4bebfff9220a
+      sendFinished: true
